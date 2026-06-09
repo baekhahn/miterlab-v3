@@ -3,6 +3,7 @@ import { fullBySlug } from '../data/collections'
 import { collections } from '../data/site'
 import { asset } from '../lib/asset'
 import { captionFor } from '../lib/captions'
+import { descriptionFor } from '../lib/descriptions'
 import Reveal from '../components/Reveal'
 
 export default function CollectionDetail() {
@@ -42,6 +43,9 @@ export default function CollectionDetail() {
           </dl>
 
           <h1 className="mt-16 text-4xl font-medium tracking-tight desktop:mt-24">{c.title}</h1>
+          <p className="mt-6 max-w-sm text-left text-[16px] leading-relaxed text-paper/80">
+            {descriptionFor(c.slug)}
+          </p>
         </div>
 
         {/* Cols 2–4 — gallery: each image (centered, 2 cols) + caption (1 col, bottom-right) */}
