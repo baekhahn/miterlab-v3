@@ -64,13 +64,13 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="flex flex-col items-center gap-3 px-8 pt-16 text-center">
+        <nav className="flex flex-col px-8 pt-12 text-center">
           {navAll.map((item) => (
             <Link
               key={item.label}
               to={item.href}
               onClick={() => setOpen(false)}
-              className="text-4xl font-medium tracking-tight transition-opacity hover:opacity-60"
+              className="block w-full py-3 text-4xl font-medium tracking-tight transition-opacity hover:opacity-60 active:opacity-60"
             >
               {item.label}
             </Link>
