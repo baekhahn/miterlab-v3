@@ -5,6 +5,7 @@ export const site = {
     { label: 'Profile', href: '/profile' },
   ],
   navRight: [
+    { label: 'Archive', href: '/archive' },
     { label: 'Journal', href: '/journal' },
     { label: 'Contact', href: '/contact' },
   ],

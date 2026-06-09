@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import CollectionList from './pages/CollectionList'
 import CollectionDetail from './pages/CollectionDetail'
+import Archive from './pages/Archive'
 import Profile from './pages/Profile'
 import JournalList from './pages/JournalList'
 import JournalDetail from './pages/JournalDetail'
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<CollectionList />} />
           <Route path="/collection/:slug" element={<CollectionDetail />} />
+          <Route path="/archive" element={<Archive />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/journal" element={<JournalList />} />
           <Route path="/journal/:slug" element={<JournalDetail />} />

@@ -1,0 +1,7 @@
+{
+  "tool_name": "mcp__Claude_Preview__preview_eval",
+  "tool_input_preview": "{\"serverId\":\"25f5606e-add2-4ef3-a9c5-371f0ca91eb8\",\"expression\":\"(() => { history.pushState({},'', '/archive'); window.dispatchEvent(new PopStateEvent('popstate')); return new Promise(r=>setTimeout(()...",
+  "error": "Eval failed: Inspected target navigated or closed",
+  "timestamp": "2026-06-09T06:27:18.776Z",
+  "retry_count": 1
+}

@@ -1,6 +1,8 @@
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { homeLayout, collectionBySlug, site } from '../data/site'
+import { homeLayout, collections, site } from '../data/site'
 import { asset } from '../lib/asset'
+import { shuffle } from '../lib/shuffle'
 import Reveal from '../components/Reveal'
 
 function Card({ c }) {
@@ -25,6 +27,11 @@ function Card({ c }) {
 }
 
 export default function Home() {
+  // Randomize which project fills each card slot on every visit,
+  // while keeping the scattered spacer rhythm intact.
+  const order = useMemo(() => shuffle(collections), [])
+
+  let cardIndex = 0
   return (
     <>
       {/* Scattered collection grid — 12-col auto-flow with desktop-only spacers */}
@@ -34,7 +41,7 @@ export default function Home() {
             item.type === 'spacer' ? (
               <div key={`s${i}`} className={`hidden desktop:block ${item.span}`} aria-hidden />
             ) : (
-              <Card key={item.slug} c={collectionBySlug(item.slug)} />
+              <Card key={i} c={order[cardIndex++]} />
             ),
           )}
         </div>
