@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink text-paper font-sans antialiased;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Force a single weight (300) everywhere, overriding font-weight utilities. */
+  body,
+  body * {
+    font-weight: 300 !important;
+  }
+
+  ::selection {
+    @apply bg-paper text-ink;
+  }
+}
+
+/* Cap the largest type at 2rem (32px) — overrides any larger size utility,
+   including responsive (tablet:/desktop:) and the few arbitrary values used. */
+.text-4xl,
+.text-5xl,
+.text-6xl,
+.text-7xl,
+.text-8xl,
+.text-9xl,
+.tablet\:text-4xl,
+.tablet\:text-5xl,
+.tablet\:text-6xl,
+.tablet\:text-7xl,
+.desktop\:text-4xl,
+.desktop\:text-5xl,
+.desktop\:text-6xl,
+.desktop\:text-7xl,
+.desktop\:text-8xl,
+.desktop\:text-\[35px\],
+.desktop\:text-\[2rem\] {
+  font-size: 2rem !important;
+  line-height: 1.15 !important;
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .img-hover {
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  }
+  .group:hover .img-hover {
+    transform: scale(1.03);
+  }
+}
