@@ -10,71 +10,56 @@ const SPACER = {
 }
 
 const rand = (n) => Math.floor(Math.random() * n)
+const COLS = 6 // 6 columns per row (each card spans 2 of the 12 grid columns)
 
-// Move all units out of dist[slot] into other allowed slots (keeps the row's
-// total width = 12 cols, so it just shifts the empty space elsewhere).
-function clearSlot(dist, slot, targets) {
-  const units = dist[slot]
-  if (units === 0 || targets.length === 0) {
-    dist[slot] = 0
-    return
-  }
-  dist[slot] = 0
-  for (let u = 0; u < units; u++) dist[targets[rand(targets.length)]]++
+// Pick `count` distinct column slots (0..5), sorted.
+function pickSlots(count) {
+  return shuffle([0, 1, 2, 3, 4, 5])
+    .slice(0, count)
+    .sort((a, b) => a - b)
 }
 
-// Build a RANDOM sparse layout each call: a 12-col grid where each card spans 2
-// cols and empty `spacer` cells of random even widths scatter them.
-// Guarantee (desktop): at least one card touches the left edge (col 1) and at
-// least one touches the right edge (col 12), so the outer columns never look empty.
+// Ensure `slot` is filled in this row, keeping the card count the same.
+function forceSlot(set, slot) {
+  if (set.has(slot)) return
+  const arr = [...set]
+  set.delete(arr[rand(arr.length)])
+  set.add(slot)
+}
+
+// 6 random projects on a fixed 6-col × 2-row grid (12 cells, 6 filled at random).
+// Layout (which cells fill) AND content are random each visit; the grid system
+// stays fixed. Guarantee: the left (col 1) and right (col 6) edges are filled.
 export function generateHomeLayout(projects) {
-  const cards = shuffle(projects)
+  const picked = shuffle(projects).slice(0, 6)
 
-  // 1) Split into rows of 2–4 cards.
-  const rows = []
-  let i = 0
-  while (i < cards.length) {
-    const left = cards.length - i
-    let n = left <= 4 ? left : 2 + rand(3)
-    if (left - n === 1) n = Math.min(left, n + 1)
-    rows.push({ cards: cards.slice(i, i + n), n })
-    i += n
-  }
+  // split 6 cards across 2 rows: 2–4 per row
+  const r1 = 2 + rand(3) // 2,3,4
+  const counts = [r1, 6 - r1]
+  const rows = counts.map((count) => ({ count, filled: new Set(pickSlots(count)) }))
 
-  // 2) Random spacer distribution per row (n+1 slots: before / between / after).
-  rows.forEach((row) => {
-    const units = 6 - row.n // (12 - 2n) / 2
-    const dist = new Array(row.n + 1).fill(0)
-    for (let u = 0; u < units; u++) dist[rand(row.n + 1)]++
-    row.dist = dist
-  })
+  // edges on the two distinct rows
+  const lr = rand(2)
+  forceSlot(rows[lr].filled, 0)
+  forceSlot(rows[1 - lr].filled, COLS - 1)
 
-  // 3) Enforce edges on two distinct rows.
-  const leftRow = rand(rows.length)
-  let rightRow = rows.length > 1 ? rand(rows.length) : leftRow
-  if (rows.length > 1) while (rightRow === leftRow) rightRow = rand(rows.length)
-
-  // left edge: no leading spacer -> first card sits in column 1
-  {
-    const d = rows[leftRow].dist
-    clearSlot(d, 0, d.map((_, idx) => idx).slice(1))
-  }
-  // right edge: no trailing spacer -> last card ends in column 12
-  {
-    const d = rows[rightRow].dist
-    const last = d.length - 1
-    clearSlot(d, last, d.map((_, idx) => idx).slice(0, last))
-  }
-
-  // 4) Flatten to a render sequence.
+  // assign cards in order across rows, build render items with spacers for gaps
   const items = []
+  let p = 0
   rows.forEach((row) => {
-    const d = row.dist
-    for (let k = 0; k < row.n; k++) {
-      if (d[k] > 0) items.push({ type: 'spacer', span: SPACER[d[k] * 2] })
-      items.push({ type: 'card', project: row.cards[k] })
+    let gap = 0
+    for (let s = 0; s < COLS; s++) {
+      if (row.filled.has(s)) {
+        if (gap > 0) {
+          items.push({ type: 'spacer', span: SPACER[gap * 2] })
+          gap = 0
+        }
+        items.push({ type: 'card', project: picked[p++] })
+      } else {
+        gap++
+      }
     }
-    if (d[row.n] > 0) items.push({ type: 'spacer', span: SPACER[d[row.n] * 2] })
+    if (gap > 0) items.push({ type: 'spacer', span: SPACER[gap * 2] })
   })
 
   return items
