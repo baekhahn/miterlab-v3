@@ -15,7 +15,7 @@ function Card({ c }) {
             className="img-hover absolute inset-0 h-full w-full object-cover"
           />
         </div>
-        <div className="mt-2.5 flex items-baseline justify-between text-[15px] font-medium">
+        <div className="mt-2.5 flex items-baseline justify-between text-[13px] font-medium">
           <span>{c.title}</span>
           <span className="text-muted">{c.year}</span>
         </div>
@@ -42,7 +42,7 @@ export default function Home() {
 
       {/* About statement */}
       <section className="px-8 pt-28 desktop:pt-40">
-        <div className="mb-4 text-[15px] text-muted">About</div>
+        <div className="mb-4 text-[13px] text-muted">About</div>
         <Reveal>
           <p className="max-w-6xl text-3xl font-medium leading-[1.15] tracking-tight desktop:text-[35px]">
             {site.about}

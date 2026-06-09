@@ -13,7 +13,7 @@ export default function JournalDetail() {
 
   return (
     <article className="px-8 pb-24">
-      <Link to="/journal" className="text-[15px] text-muted transition-colors hover:text-paper">
+      <Link to="/journal" className="text-[13px] text-muted transition-colors hover:text-paper">
         ← Back
       </Link>
 
@@ -32,7 +32,7 @@ export default function JournalDetail() {
       </div>
 
       <div className="mx-auto mt-20 max-w-3xl border-t border-paper/15 pt-8">
-        <div className="text-[15px] text-muted">Next Post</div>
+        <div className="text-[13px] text-muted">Next Post</div>
         <Link
           to={`/journal/${next.slug}`}
           className="mt-2 inline-block text-2xl font-medium tracking-tight transition-opacity hover:opacity-60 desktop:text-4xl"

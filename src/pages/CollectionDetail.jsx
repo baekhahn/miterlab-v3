@@ -25,12 +25,12 @@ export default function CollectionDetail() {
         <div className="desktop:sticky desktop:top-8 desktop:h-fit desktop:self-start">
           <Link
             to="/collection"
-            className="text-[15px] text-muted transition-colors hover:text-paper"
+            className="text-[13px] text-muted transition-colors hover:text-paper"
           >
             ← Back
           </Link>
 
-          <dl className="mt-10 max-w-sm space-y-5 text-[15px] desktop:mt-16">
+          <dl className="mt-10 max-w-sm space-y-5 text-[13px] desktop:mt-16">
             {meta.map((m) => (
               <div key={m.label} className="flex justify-between gap-6 border-b border-paper/15 pb-3">
                 <dt className="text-muted">{m.label}</dt>
@@ -60,7 +60,7 @@ export default function CollectionDetail() {
       </div>
 
       <div className="mt-20 border-t border-paper/15 pt-8">
-        <div className="text-[15px] text-muted">Next Collection</div>
+        <div className="text-[13px] text-muted">Next Collection</div>
         <Link
           to={`/collection/${next.slug}`}
           className="mt-2 inline-block text-4xl font-medium tracking-tight transition-opacity hover:opacity-60 desktop:text-6xl"

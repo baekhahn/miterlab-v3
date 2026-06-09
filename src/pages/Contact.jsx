@@ -12,7 +12,7 @@ export default function Contact() {
       </h1>
 
       <div className="mt-16 grid grid-cols-1 gap-12 desktop:grid-cols-12">
-        <div className="space-y-8 text-[15px] desktop:col-span-5">
+        <div className="space-y-8 text-[13px] desktop:col-span-5">
           <div>
             <div className="text-muted">Studio</div>
             <p className="mt-1 whitespace-pre-line text-lg leading-relaxed">{address}</p>
@@ -38,7 +38,7 @@ export default function Contact() {
             { id: 'email', label: 'Email', type: 'email' },
           ].map((f) => (
             <div key={f.id}>
-              <label htmlFor={f.id} className="text-[15px] text-muted">{f.label}</label>
+              <label htmlFor={f.id} className="text-[13px] text-muted">{f.label}</label>
               <input
                 id={f.id}
                 type={f.type}
@@ -47,7 +47,7 @@ export default function Contact() {
             </div>
           ))}
           <div>
-            <label htmlFor="message" className="text-[15px] text-muted">Message</label>
+            <label htmlFor="message" className="text-[13px] text-muted">Message</label>
             <textarea
               id="message"
               rows={4}
@@ -56,7 +56,7 @@ export default function Contact() {
           </div>
           <button
             type="submit"
-            className="rounded-full border border-paper px-6 py-3 text-[15px] transition-colors hover:bg-paper hover:text-ink"
+            className="rounded-full border border-paper px-6 py-3 text-[13px] transition-colors hover:bg-paper hover:text-ink"
           >
             Send Message →
           </button>
