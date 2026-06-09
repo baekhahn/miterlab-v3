@@ -10,7 +10,7 @@ export const site = {
     { label: 'Contact', href: '/contact' },
   ],
   about:
-    'Collin is a passionate photographer dedicated to capturing the beauty of life through his lens. With an eye for detail and a love for storytelling, he transforms everyday moments into timeless works of art.',
+    'We connect distinct pieces with care, crafting experiences that feel whole and deeply human. Like a precisely mitered joint locked at 45 degrees, different ideas and technologies join seamlessly to create solid, lasting value.',
   socials: [
     { label: 'Instagram', href: '#' },
     { label: 'Facebook', href: '#' },
