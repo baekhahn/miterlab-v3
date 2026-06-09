@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from 'react-router-dom'
 import { fullBySlug } from '../data/collections'
 import { collections } from '../data/site'
 import { asset } from '../lib/asset'
+import { captionFor } from '../lib/captions'
 import Reveal from '../components/Reveal'
 
 export default function CollectionDetail() {
@@ -11,7 +12,6 @@ export default function CollectionDetail() {
 
   const idx = collections.findIndex((x) => x.slug === slug)
   const next = collections[(idx + 1) % collections.length]
-  const total = c.gallery.length
 
   const meta = [
     { label: 'Project Type', value: c.projectType },
@@ -61,17 +61,11 @@ export default function CollectionDetail() {
                 />
               </div>
 
-              {/* caption — last column, aligned to the image bottom-right */}
+              {/* caption — last column: left-aligned paragraph, at the image bottom */}
               <div className="desktop:col-span-1">
-                <div className="text-[13px] leading-relaxed">
-                  <div className="text-muted">
-                    {String(i + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-                  </div>
-                  <div className="mt-1">{c.title}</div>
-                  <div className="text-muted">
-                    {c.projectType} · {c.year}
-                  </div>
-                </div>
+                <p className="max-w-xs text-left text-[13px] leading-relaxed text-paper/80">
+                  {captionFor(i)}
+                </p>
               </div>
             </Reveal>
           ))}
