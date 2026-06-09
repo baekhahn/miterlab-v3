@@ -22,7 +22,7 @@ export default function CollectionDetail() {
   ]
 
   return (
-    <article className="min-h-svh px-8 pb-24 pt-8">
+    <article className="px-8 pb-24 pt-8">
       {/* PC: 4 columns — [info] [image image] [caption] */}
       <div className="grid grid-cols-1 gap-10 desktop:grid-cols-4 desktop:gap-8">
         {/* Col 1 — sticky info */}
