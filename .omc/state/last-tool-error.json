@@ -1,7 +1,7 @@
 {
   "tool_name": "mcp__Claude_Preview__preview_eval",
-  "tool_input_preview": "{\"serverId\":\"25f5606e-add2-4ef3-a9c5-371f0ca91eb8\",\"expression\":\"(() => { history.pushState({},'', '/archive'); window.dispatchEvent(new PopStateEvent('popstate')); return new Promise(r=>setTimeout(()...",
+  "tool_input_preview": "{\"serverId\":\"e18c645f-519e-4a80-993c-5d23b0c07817\",\"expression\":\"(() => { \\n  // capture desktop layout positions twice (reload between) to confirm layout (not just content) changes\\n  const cap=()=>{...",
   "error": "Eval failed: Inspected target navigated or closed",
-  "timestamp": "2026-06-09T06:27:18.776Z",
+  "timestamp": "2026-06-09T06:34:57.470Z",
   "retry_count": 1
 }
