@@ -39,7 +39,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="text-[12px] transition-opacity hover:opacity-60 desktop:hidden"
+          className="text-[14px] transition-opacity hover:opacity-60 desktop:hidden"
         >
           Menu
         </button>
@@ -58,7 +58,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="transition-opacity hover:opacity-60"
+            className="text-[14px] transition-opacity hover:opacity-60"
           >
             Close
           </button>
