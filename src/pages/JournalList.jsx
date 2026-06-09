@@ -22,7 +22,7 @@ export default function JournalList() {
                   className="img-hover absolute inset-0 h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-3 text-[13px] font-medium leading-snug">{post.title}</div>
+              <div className="mt-3 text-[12px] font-medium leading-snug">{post.title}</div>
             </Link>
           </Reveal>
         ))}

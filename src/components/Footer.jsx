@@ -10,7 +10,7 @@ export default function Footer() {
           <Logo className="h-8 w-auto desktop:h-10" />
         </Link>
 
-        <div className="text-[13px]">
+        <div className="text-[12px]">
           <div className="mb-3 text-muted">Important Links</div>
           <ul className="space-y-1">
             <li><Link to="/profile" className="transition-opacity hover:opacity-60">Profile</Link></li>
@@ -19,7 +19,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="text-[13px] tablet:justify-self-end">
+        <div className="text-[12px] tablet:justify-self-end">
           <div className="mb-3 text-muted">Social</div>
           <ul className="space-y-1">
             {site.socials.map((s) => (

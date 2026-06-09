@@ -22,7 +22,7 @@ export default function CollectionList() {
                   className="img-hover absolute inset-0 h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-3 flex items-baseline justify-between text-[13px] font-medium">
+              <div className="mt-3 flex items-baseline justify-between text-[12px] font-medium">
                 <span>{c.title}</span>
                 <span className="text-muted">{c.year}</span>
               </div>

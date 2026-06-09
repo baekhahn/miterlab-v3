@@ -15,7 +15,7 @@ export default function Archive() {
       onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}
     >
       {/* Column header */}
-      <div className="grid grid-cols-12 border-b border-paper/15 pb-3 text-[13px] text-muted">
+      <div className="grid grid-cols-12 border-b border-paper/15 pb-3 text-[12px] text-muted">
         <div className="col-span-6">Project</div>
         <div className="col-span-4">Category</div>
         <div className="col-span-2 text-right">Year</div>
@@ -30,7 +30,7 @@ export default function Archive() {
                 to={`/collection/${c.slug}`}
                 onMouseEnter={() => setHovered(c)}
                 onMouseLeave={() => setHovered((h) => (h === c ? null : h))}
-                className="grid grid-cols-12 items-baseline py-3 text-lg transition-opacity hover:opacity-60"
+                className="grid grid-cols-12 items-baseline py-3 text-[14px] transition-opacity hover:opacity-60"
               >
                 <span className="col-span-6">{c.title}</span>
                 <span className="col-span-4 text-muted">{cat}</span>
