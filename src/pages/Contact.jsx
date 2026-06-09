@@ -2,19 +2,19 @@ import { contact } from '../data/collections'
 import { site } from '../data/site'
 
 export default function Contact() {
-  const heading = contact.paras[0] || 'Get in Touch'
-  const address = contact.paras[1] || ''
+  const heading = "Let's make the pieces fit — get in touch with Miterlab."
+  const address = '5F, 818, Seolleung-ro, Gangnam-gu, Seoul, 06014, Republic of Korea'
 
   return (
     <section className="px-8 pb-24">
-      <h1 className="max-w-5xl text-4xl font-medium leading-tight tracking-tight desktop:text-6xl">
+      <h1 className="mb-6 max-w-5xl text-4xl font-medium leading-tight tracking-tight desktop:text-6xl">
         {heading}
       </h1>
 
-      <div className="mt-16 grid grid-cols-1 gap-12 desktop:grid-cols-12">
+      <div className="grid grid-cols-1 gap-12 desktop:grid-cols-12">
         <div className="space-y-8 text-[12px] desktop:col-span-5">
           <div>
-            <div className="text-muted">Studio</div>
+            <div className="text-muted">Address</div>
             <p className="mt-1 whitespace-pre-line text-lg leading-relaxed">{address}</p>
           </div>
           <div>
@@ -58,7 +58,7 @@ export default function Contact() {
             type="submit"
             className="rounded-full border border-paper px-6 py-3 text-[12px] transition-colors hover:bg-paper hover:text-ink"
           >
-            Send Message →
+            {'Send Message ->'}
           </button>
         </form>
       </div>

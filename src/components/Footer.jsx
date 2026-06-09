@@ -11,11 +11,11 @@ export default function Footer() {
         </Link>
 
         <div className="text-[12px]">
-          <div className="mb-3 text-muted">Important Links</div>
+          <div className="mb-3 text-muted">Menu</div>
           <ul className="space-y-1">
-            <li><Link to="/profile" className="transition-opacity hover:opacity-60">Profile</Link></li>
-            <li><Link to="/collection" className="transition-opacity hover:opacity-60">Collections</Link></li>
-            <li><Link to="/journal" className="transition-opacity hover:opacity-60">Journal</Link></li>
+            <li><Link to="/profile" className="transition-opacity hover:opacity-60">About</Link></li>
+            <li><Link to="/archive" className="transition-opacity hover:opacity-60">Project</Link></li>
+            <li><Link to="/contact" className="transition-opacity hover:opacity-60">Contact</Link></li>
           </ul>
         </div>
 

@@ -3,10 +3,11 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
-      // Framer breakpoints: Desktop >=1200, Tablet 810-1199, Phone <810
+      // Breakpoints: Desktop >=1024 (covers all iPad landscape 1080–1366),
+      // Tablet 810–1023 (iPad portrait), Phone <810.
       screens: {
         tablet: '810px',
-        desktop: '1200px',
+        desktop: '1024px',
       },
       colors: {
         // Inverted palette: black background, white foreground

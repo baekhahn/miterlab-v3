@@ -3,18 +3,35 @@ import { Link } from 'react-router-dom'
 import { collections } from '../data/site'
 import { fullBySlug } from '../data/collections'
 import { asset } from '../lib/asset'
+import Reveal from '../components/Reveal'
+import PageTitle from '../components/PageTitle'
+import Img from '../components/Img'
 
-export default function Archive() {
+function ThumbnailView() {
+  return (
+    <div className="grid grid-cols-2 gap-x-8 gap-y-12 tablet:grid-cols-3 desktop:grid-cols-4">
+      {collections.map((c, i) => (
+        <Reveal key={c.slug} delay={(i % 4) * 60} className="group">
+          <Link to={`/collection/${c.slug}`} className="block">
+            <Img src={asset(c.image)} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
+            <div className="mt-3 flex items-baseline justify-between text-[12px] font-medium">
+              <span>{c.title}</span>
+              <span className="text-muted">{c.year}</span>
+            </div>
+          </Link>
+        </Reveal>
+      ))}
+    </div>
+  )
+}
+
+function ListView() {
   const rows = [...collections].sort((a, b) => Number(b.year) - Number(a.year))
-  const [hovered, setHovered] = useState(null) // collection
+  const [hovered, setHovered] = useState(null)
   const [pos, setPos] = useState({ x: 0, y: 0 })
 
   return (
-    <section
-      className="relative px-8 pb-24"
-      onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}
-    >
-      {/* Column header */}
+    <div className="relative" onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}>
       <div className="grid grid-cols-12 border-b border-paper/15 pb-3 text-[12px] text-muted">
         <div className="col-span-6">Project</div>
         <div className="col-span-4">Category</div>
@@ -41,7 +58,6 @@ export default function Archive() {
         })}
       </ul>
 
-      {/* Cursor-following hover thumbnail (desktop pointers only) */}
       <div
         aria-hidden
         className="pointer-events-none fixed z-50 hidden w-40 overflow-hidden tablet:block"
@@ -54,13 +70,46 @@ export default function Archive() {
         }}
       >
         {hovered && (
-          <img
-            src={asset(hovered.image)}
-            alt=""
-            className="aspect-[3/4] w-full object-cover"
-          />
+          <Img key={hovered.slug} src={asset(hovered.image)} alt="" aspect="aspect-[3/4]" />
         )}
       </div>
+    </div>
+  )
+}
+
+export default function Archive() {
+  const [view, setView] = useState('grid') // 'grid' | 'list'
+
+  return (
+    <section className="px-8 pb-6">
+      <PageTitle
+        actions={
+          <div className="flex gap-4 text-[14px]">
+            <button
+              type="button"
+              onClick={() => setView('grid')}
+              className={`uppercase transition-opacity hover:opacity-60 ${
+                view === 'grid' ? 'text-paper' : 'text-muted'
+              }`}
+            >
+              Grid
+            </button>
+            <button
+              type="button"
+              onClick={() => setView('list')}
+              className={`uppercase transition-opacity hover:opacity-60 ${
+                view === 'list' ? 'text-paper' : 'text-muted'
+              }`}
+            >
+              List
+            </button>
+          </div>
+        }
+      >
+        Project
+      </PageTitle>
+
+      {view === 'grid' ? <ThumbnailView /> : <ListView />}
     </section>
   )
 }

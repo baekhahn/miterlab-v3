@@ -4,19 +4,13 @@ import { collections, site } from '../data/site'
 import { asset } from '../lib/asset'
 import { generateHomeLayout } from '../lib/homeLayout'
 import Reveal from '../components/Reveal'
+import Img from '../components/Img'
 
 function Card({ c }) {
   return (
     <Reveal className="group col-span-6 tablet:col-span-4 desktop:col-span-2">
       <Link to={`/collection/${c.slug}`} className="block">
-        <div className="relative aspect-[3/4] overflow-hidden">
-          <img
-            src={asset(c.image)}
-            alt={c.title}
-            loading="lazy"
-            className="img-hover absolute inset-0 h-full w-full object-cover"
-          />
-        </div>
+        <Img src={asset(c.image)} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
         <div className="mt-2.5 flex items-baseline justify-between text-[12px] font-medium">
           <span>{c.title}</span>
           <span className="text-muted">{c.year}</span>
@@ -46,7 +40,7 @@ export default function Home() {
       </section>
 
       {/* About statement */}
-      <section className="px-8 pt-28 desktop:pt-40">
+      <section className="px-8 pt-28 desktop:pt-32">
         <div className="mb-4 text-[12px] text-muted">About</div>
         <Reveal>
           <p className="max-w-6xl text-[24px] font-medium leading-[1.15] tracking-tight desktop:text-[32px]">

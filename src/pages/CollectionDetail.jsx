@@ -5,6 +5,7 @@ import { asset } from '../lib/asset'
 import { captionFor } from '../lib/captions'
 import { descriptionFor } from '../lib/descriptions'
 import Reveal from '../components/Reveal'
+import Img from '../components/Img'
 
 export default function CollectionDetail() {
   const { slug } = useParams()
@@ -28,9 +29,9 @@ export default function CollectionDetail() {
         <div className="desktop:sticky desktop:top-8 desktop:h-fit desktop:self-start">
           <Link
             to="/collection"
-            className="text-[12px] text-muted transition-colors hover:text-paper"
+            className="text-[14px] uppercase text-muted transition-colors hover:text-paper"
           >
-            ← Back
+            {'<- Back'}
           </Link>
 
           <dl className="mt-10 space-y-5 text-[12px] desktop:mt-16">
@@ -57,12 +58,7 @@ export default function CollectionDetail() {
             >
               {/* image — middle two columns, centered */}
               <div className="flex justify-center desktop:col-span-2">
-                <img
-                  src={asset(src)}
-                  alt={`${c.title} — ${i + 1}`}
-                  loading="lazy"
-                  className="w-full"
-                />
+                <Img src={asset(src)} alt={`${c.title} — ${i + 1}`} className="w-full" />
               </div>
 
               {/* caption — last column: left-aligned paragraph, at the image bottom */}
@@ -78,12 +74,12 @@ export default function CollectionDetail() {
 
       {/* Next collection */}
       <div className="mt-20 border-t border-paper/15 pt-8">
-        <div className="text-[12px] text-muted">Next Collection</div>
+        <div className="text-[12px] text-muted">Next Project</div>
         <Link
           to={`/collection/${next.slug}`}
           className="mt-2 inline-block text-4xl font-medium tracking-tight transition-opacity hover:opacity-60"
         >
-          {next.title} →
+          {next.title} {'->'}
         </Link>
       </div>
     </article>
