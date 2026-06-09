@@ -49,7 +49,7 @@ export default function Home() {
       <section className="px-8 pt-28 desktop:pt-40">
         <div className="mb-4 text-[12px] text-muted">About</div>
         <Reveal>
-          <p className="max-w-6xl text-3xl font-medium leading-[1.15] tracking-tight desktop:text-[35px]">
+          <p className="max-w-6xl text-[24px] font-medium leading-[1.15] tracking-tight desktop:text-[32px]">
             {site.about}
           </p>
         </Reveal>
