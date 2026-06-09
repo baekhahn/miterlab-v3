@@ -1,7 +1,13 @@
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import CollectionDetail from './pages/CollectionDetail'
+
+// Legacy /collection/:slug -> canonical /project/:slug
+function LegacyProjectRedirect() {
+  const { slug } = useParams()
+  return <Navigate to={`/project/${slug}`} replace />
+}
 import Archive from './pages/Archive'
 import Profile from './pages/Profile'
 import JournalList from './pages/JournalList'
@@ -14,8 +20,9 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/project/:slug" element={<CollectionDetail />} />
           <Route path="/collection" element={<Navigate to="/archive" replace />} />
-          <Route path="/collection/:slug" element={<CollectionDetail />} />
+          <Route path="/collection/:slug" element={<LegacyProjectRedirect />} />
           <Route path="/archive" element={<Archive />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/journal" element={<JournalList />} />

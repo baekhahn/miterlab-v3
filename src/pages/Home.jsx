@@ -9,7 +9,7 @@ import Img from '../components/Img'
 function Card({ c }) {
   return (
     <Reveal className="group col-span-6 tablet:col-span-4 desktop:col-span-2">
-      <Link to={`/collection/${c.slug}`} className="block">
+      <Link to={`/project/${c.slug}`} className="block">
         <Img src={asset(c.image)} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
         <div className="mt-2.5 flex items-baseline justify-between text-[12px] font-medium">
           <span>{c.title}</span>

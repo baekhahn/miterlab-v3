@@ -12,7 +12,7 @@ function ThumbnailView() {
     <div className="grid grid-cols-2 gap-x-8 gap-y-12 tablet:grid-cols-3 desktop:grid-cols-4">
       {collections.map((c, i) => (
         <Reveal key={c.slug} delay={(i % 4) * 60} className="group">
-          <Link to={`/collection/${c.slug}`} className="block">
+          <Link to={`/project/${c.slug}`} className="block">
             <Img src={asset(c.image)} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
             <div className="mt-3 flex items-baseline justify-between text-[12px] font-medium">
               <span>{c.title}</span>
@@ -44,7 +44,7 @@ function ListView() {
           return (
             <li key={c.slug} className="border-b border-paper/15">
               <Link
-                to={`/collection/${c.slug}`}
+                to={`/project/${c.slug}`}
                 onMouseEnter={() => setHovered(c)}
                 onMouseLeave={() => setHovered((h) => (h === c ? null : h))}
                 className="grid grid-cols-12 items-baseline py-3 text-[14px] transition-opacity hover:opacity-60"
