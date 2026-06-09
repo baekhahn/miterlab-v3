@@ -64,7 +64,7 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="flex flex-col gap-3 px-8 pt-12">
+        <nav className="flex flex-col items-center gap-3 px-8 pt-16 text-center">
           {navAll.map((item) => (
             <Link
               key={item.label}
