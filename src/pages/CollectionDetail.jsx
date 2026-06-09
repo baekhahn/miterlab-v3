@@ -10,7 +10,7 @@ import Img from '../components/Img'
 export default function CollectionDetail() {
   const { slug } = useParams()
   const c = fullBySlug(slug)
-  if (!c) return <Navigate to="/archive" replace />
+  if (!c) return <Navigate to="/project" replace />
 
   const idx = collections.findIndex((x) => x.slug === slug)
   const next = collections[(idx + 1) % collections.length]
@@ -28,7 +28,7 @@ export default function CollectionDetail() {
         {/* Col 1 — sticky info */}
         <div className="desktop:sticky desktop:top-8 desktop:h-fit desktop:self-start">
           <Link
-            to="/archive"
+            to="/project"
             className="text-[14px] uppercase text-muted transition-colors hover:text-paper"
           >
             {'<- Back'}

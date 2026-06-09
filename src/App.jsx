@@ -20,10 +20,11 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/project" element={<Archive />} />
           <Route path="/project/:slug" element={<CollectionDetail />} />
-          <Route path="/collection" element={<Navigate to="/archive" replace />} />
+          <Route path="/archive" element={<Navigate to="/project" replace />} />
+          <Route path="/collection" element={<Navigate to="/project" replace />} />
           <Route path="/collection/:slug" element={<LegacyProjectRedirect />} />
-          <Route path="/archive" element={<Archive />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/journal" element={<JournalList />} />
           <Route path="/journal/:slug" element={<JournalDetail />} />
