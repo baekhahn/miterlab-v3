@@ -1,6 +1,6 @@
 export default {
-  title: 'Kolon Sports Trail Run',
-  year: '2025',
+  title: 'Kolon Trail Run',
+  year: '2026',
   projectType: 'Art Direction',
   for: 'Kolon Sport',
   description:
