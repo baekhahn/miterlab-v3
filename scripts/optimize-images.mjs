@@ -28,6 +28,7 @@ for (let i = 0; i < sources.length; i++) {
   const out = path.join(dir, `${pad(i + 1)}.webp`)
   const meta = await sharp(src).metadata()
   const w = await sharp(src)
+    .rotate() // apply EXIF orientation so portrait shots stay upright
     .resize({ width: MAX, height: MAX, fit: 'inside', withoutEnlargement: true })
     .webp({ quality: Q, effort: 6 })
     .toFile(out)
