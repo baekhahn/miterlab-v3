@@ -22,10 +22,10 @@ export default function CollectionDetail() {
 
   return (
     <article className="px-8 pb-24">
-      {/* PC: 4 columns — [info] [image image] [caption] */}
-      <div className="grid grid-cols-1 gap-10 desktop:grid-cols-4 desktop:gap-8">
-        {/* Col 1 — sticky info */}
-        <div className="desktop:sticky desktop:top-8 desktop:h-fit desktop:self-start">
+      {/* PC: 12 columns — [text x3] [image x6] [caption x3] */}
+      <div className="grid grid-cols-1 gap-10 desktop:grid-cols-12 desktop:gap-8">
+        {/* Cols 1–3 — sticky info / text */}
+        <div className="desktop:col-span-3 desktop:sticky desktop:top-8 desktop:h-fit desktop:self-start">
           <Link
             to="/project"
             className="text-[14px] uppercase text-muted transition-colors hover:text-paper"
@@ -43,7 +43,7 @@ export default function CollectionDetail() {
           </dl>
 
           <h1 className="mt-16 text-4xl font-medium tracking-tight desktop:mt-24">{c.title}</h1>
-          <div className="mt-6 max-w-sm space-y-4 text-left text-[16px] leading-relaxed text-paper/80">
+          <div className="mt-6 space-y-4 text-left text-[16px] leading-relaxed text-paper/80">
             {descriptionFor(c.slug)
               .split(/\n\n+/)
               .map((para, i) => (
@@ -54,20 +54,20 @@ export default function CollectionDetail() {
           </div>
         </div>
 
-        {/* Cols 2–4 — gallery: each image (centered, 2 cols) + caption (1 col, bottom-right) */}
-        <div className="space-y-12 desktop:col-span-3 desktop:space-y-16">
+        {/* Cols 4–12 — gallery: each image (6 cols, centered) + caption (3 cols, bottom-right) */}
+        <div className="space-y-12 desktop:col-span-9 desktop:space-y-16">
           {c.gallery.map((src, i) => (
             <Reveal
               key={i}
-              className="grid grid-cols-1 items-end gap-4 desktop:grid-cols-3 desktop:gap-8"
+              className="grid grid-cols-1 items-end gap-4 desktop:grid-cols-9 desktop:gap-8"
             >
-              {/* image — middle two columns, centered */}
-              <div className="flex justify-center desktop:col-span-2">
+              {/* image — first six columns, centered */}
+              <div className="flex justify-center desktop:col-span-6">
                 <Img src={src} alt={`${c.title} — ${i + 1}`} className="w-full" />
               </div>
 
-              {/* caption — last column: left-aligned paragraph, at the image bottom */}
-              <div className="desktop:col-span-1">
+              {/* caption — last columns: left-aligned paragraph, at the image bottom */}
+              <div className="desktop:col-span-3">
                 <p className="max-w-xs text-left text-[13px] leading-relaxed text-paper/80">
                   {captionFor(i)}
                 </p>
