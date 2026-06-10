@@ -42,7 +42,7 @@ export default function About() {
       {/* Intro statement — 48px desktop, columns 1-3 of the 6-grid */}
       <Reveal>
         <div className="grid grid-cols-1 desktop:grid-cols-6 desktop:gap-x-5">
-          <h1 className="mt-[100px] text-[32px] leading-[1.1] tracking-tight tablet:text-[40px] desktop:col-span-4 desktop:text-[48px]">
+          <h1 className="weight-100 mt-[100px] text-[32px] leading-[1.1] tracking-tight tablet:text-[40px] desktop:col-span-4 desktop:text-[48px]">
             {site.about}
           </h1>
         </div>
