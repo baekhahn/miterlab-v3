@@ -5,7 +5,8 @@ export const site = {
     { label: 'Project', href: '/project' },
   ],
   navRight: [
-    { label: 'Journal', href: '/journal' },
+    // Journal hidden for now — uncomment to restore.
+    // { label: 'Journal', href: '/journal' },
     { label: 'Contact', href: '/contact' },
   ],
   about:

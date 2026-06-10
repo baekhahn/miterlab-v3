@@ -123,3 +123,21 @@
     background-position: -200% 0;
   }
 }
+
+/* Infinite horizontal image ticker (About). The track holds two identical
+   halves; translating -50% then looping back reads as a seamless roll.
+   will-change promotes the track to its own GPU layer so the roll keeps
+   running even while the main thread is busy (image decode, route changes). */
+.ticker-track {
+  animation: ticker-scroll 40s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

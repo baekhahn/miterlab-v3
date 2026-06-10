@@ -33,14 +33,17 @@ function ListView() {
   return (
     <div className="relative" onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}>
       <div className="grid grid-cols-12 border-b border-paper/15 pb-3 text-[12px] text-muted">
-        <div className="col-span-6">Project</div>
-        <div className="col-span-4">Category</div>
-        <div className="col-span-2 text-right">Year</div>
+        <div className="col-span-7 tablet:col-span-5">Project</div>
+        <div className="col-span-3">Project Type</div>
+        <div className="hidden tablet:block tablet:col-span-3">For</div>
+        <div className="col-span-2 text-right tablet:col-span-1">Year</div>
       </div>
 
       <ul>
         {rows.map((c) => {
-          const cat = fullBySlug(c.slug)?.projectType || '—'
+          const full = fullBySlug(c.slug)
+          const type = full?.projectType || '—'
+          const client = full?.for || '—'
           return (
             <li key={c.slug} className="border-b border-paper/15">
               <Link
@@ -49,9 +52,10 @@ function ListView() {
                 onMouseLeave={() => setHovered((h) => (h === c ? null : h))}
                 className="grid grid-cols-12 items-baseline py-3 text-[14px] transition-opacity hover:opacity-60"
               >
-                <span className="col-span-6">{c.title}</span>
-                <span className="col-span-4 text-muted">{cat}</span>
-                <span className="col-span-2 text-right text-muted">{c.year}</span>
+                <span className="col-span-7 tablet:col-span-5">{c.title}</span>
+                <span className="col-span-3 text-muted">{type}</span>
+                <span className="hidden text-muted tablet:block tablet:col-span-3">{client}</span>
+                <span className="col-span-2 text-right text-muted tablet:col-span-1">{c.year}</span>
               </Link>
             </li>
           )

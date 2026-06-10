@@ -1,4 +1,3 @@
-import { contact } from '../data/collections'
 import { site } from '../data/site'
 
 export default function Contact() {
@@ -7,12 +6,16 @@ export default function Contact() {
 
   return (
     <section className="px-8 pb-24">
-      <h1 className="mb-6 max-w-5xl text-4xl font-medium leading-tight tracking-tight desktop:text-6xl">
-        {heading}
-      </h1>
+      {/* 6-column grid. Row 1: heading. Row 2: info (cols 1-2) + form (cols 3-5),
+          so the Address label and the Name field start at the same height. */}
+      <div className="grid grid-cols-1 gap-y-12 desktop:grid-cols-6 desktop:gap-x-5">
+        {/* Heading — row 1, columns 1-2 */}
+        <h1 className="text-4xl font-medium leading-tight tracking-tight desktop:col-span-2 desktop:row-start-1">
+          {heading}
+        </h1>
 
-      <div className="grid grid-cols-1 gap-12 desktop:grid-cols-12">
-        <div className="space-y-8 text-[12px] desktop:col-span-5">
+        {/* Address + Social — row 2, columns 1-2 */}
+        <div className="space-y-8 text-[12px] desktop:col-start-1 desktop:col-span-2 desktop:row-start-2">
           <div>
             <div className="text-muted">Address</div>
             <p className="mt-1 whitespace-pre-line text-lg leading-relaxed">{address}</p>
@@ -32,7 +35,11 @@ export default function Contact() {
           </div>
         </div>
 
-        <form className="space-y-8 desktop:col-span-7" onSubmit={(e) => e.preventDefault()}>
+        {/* Message form — row 2, columns 3-5 */}
+        <form
+          className="space-y-8 desktop:col-start-3 desktop:col-span-3 desktop:row-start-2"
+          onSubmit={(e) => e.preventDefault()}
+        >
           {[
             { id: 'name', label: 'Name', type: 'text' },
             { id: 'email', label: 'Email', type: 'email' },

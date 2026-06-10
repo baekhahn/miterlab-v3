@@ -14,6 +14,11 @@ const galleryModules = import.meta.glob('./[0-9]*.{jpg,jpeg,png,webp,avif}', {
   eager: true,
   import: 'default',
 })
+// Editorial figures for the About body (baseform-style gallery), in numeric order.
+const figureModules = import.meta.glob('./figures/[0-9]*.{jpg,jpeg,png,webp,avif}', {
+  eager: true,
+  import: 'default',
+})
 
 const numOf = (path) => {
   const m = path.match(/\/(\d+)\.[^/]+$/)
@@ -25,4 +30,8 @@ const gallery = Object.entries(galleryModules)
   .sort((a, b) => numOf(a[0]) - numOf(b[0]))
   .map(([, url]) => url)
 
-export const about = { ...content, cover, gallery }
+const figures = Object.entries(figureModules)
+  .sort((a, b) => numOf(a[0]) - numOf(b[0]))
+  .map(([, url]) => url)
+
+export const about = { ...content, cover, gallery, figures }

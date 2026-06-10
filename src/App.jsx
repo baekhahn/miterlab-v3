@@ -10,6 +10,7 @@ function LegacyProjectRedirect() {
 }
 import Archive from './pages/Archive'
 import About from './pages/About'
+import About2 from './pages/About2'
 import JournalList from './pages/JournalList'
 import JournalDetail from './pages/JournalDetail'
 import Contact from './pages/Contact'
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/collection" element={<Navigate to="/project" replace />} />
           <Route path="/collection/:slug" element={<LegacyProjectRedirect />} />
           <Route path="/about" element={<About />} />
+          <Route path="/about2" element={<About2 />} />
           <Route path="/profile" element={<Navigate to="/about" replace />} />
           <Route path="/journal" element={<JournalList />} />
           <Route path="/journal/:slug" element={<JournalDetail />} />

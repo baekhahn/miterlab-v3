@@ -1,6 +1,45 @@
 // About page text. Edit this file (and drop images in this folder) to update
 // the About page — same folder-based flow as src/projects/<slug>/.
 export default {
+  // "Who We Are" body paragraphs — English first, Korean below.
+  // Korean paragraphs are auto-styled with .kr (Pretendard 500).
+  intro: [
+    'From brand and service strategy for digital products to user research, service design, design systems, and brand campaign creative —',
+    'we aim beyond simply being able to do it, and think hard about doing it with real excellence.',
+    'We have led platform services through the entire journey, from early design to global launch — reaching beyond design into internal systems, user journeys, and brand strategy. Working across different industries and teams has become the foundation for understanding problems faster and solving them more clearly.',
+    '디지털 프로덕트의 브랜드 · 서비스 전략부터 사용자 리서치, 서비스 설계, 디자인시스템 구축 및 브랜드 캠페인 크리에이티브까지의 영역에서 –',
+    '단순히 할 수 있는 수준을 넘어 ‘더 탁월하게 해내는 것’ 을 고민합니다.',
+    '플랫폼 서비스의 초기 설계부터 글로벌 론칭까지 전 과정을 주도해왔고, 단순한 디자인을 넘어 조직 내부 시스템, 사용자 여정, 브랜드 전략까지 폭넓게 다뤄왔습니다. 각기 다른 산업, 다양한 팀과 협업하며 쌓아온 경험은 문제를 더 빠르게 이해하고, 더 명확하게 풀어낼 수 있는 기반이 되었습니다.',
+  ],
+
+  // Services list — rendered as two columns (first half / second half).
+  services: [
+    'Digital Product Strategy',
+    'Digital Product Experience',
+    'UX Research & UI Prototyping',
+    'Design System Development',
+    'Growth Design',
+    'Visual Design',
+    'Infographics & Data Visualization',
+    'Brand Strategy',
+    'Brand Guidelines',
+    'Naming & Tagline',
+    'Tone of Voice Development',
+    'Campaign Creative',
+    'Content Strategy & Copywriting',
+    'Sound Design / Sonic Branding',
+  ],
+  clients: [
+    'NAVER CORP',
+    'Hanwha Life Insurance',
+    'HYUNDAI MOTOR GROUP',
+    'axz corp (Upstage)',
+    'Kolon Sports',
+    'ORR',
+    'Spike Zones',
+  ],
+
+  // Legacy About (now /about2) body paragraphs.
   paras: [
     'Miterlab brings a seasoned eye and a passion for storytelling to every shoot, ensuring each moment is beautifully preserved.',
     'At Miterlab, we understand that every client has a unique story and vision. Our approach begins with a personalized consultation, where we get to know your preferences, style, and the emotions you want to capture. This connection allows us to create photos that not only reflect your individuality but also feel authentic and meaningful, resulting in a gallery that truly resonates with you.',
