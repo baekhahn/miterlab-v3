@@ -43,13 +43,15 @@ export default function CollectionDetail() {
           </dl>
 
           <h1 className="mt-16 text-4xl font-medium tracking-tight desktop:mt-24">{c.title}</h1>
-          <p
-            className={`mt-6 max-w-sm text-left text-[16px] leading-relaxed text-paper/80 ${
-              /[가-힣]/.test(descriptionFor(c.slug)) ? 'kr' : ''
-            }`}
-          >
-            {descriptionFor(c.slug)}
-          </p>
+          <div className="mt-6 max-w-sm space-y-4 text-left text-[16px] leading-relaxed text-paper/80">
+            {descriptionFor(c.slug)
+              .split(/\n\n+/)
+              .map((para, i) => (
+                <p key={i} className={/[가-힣]/.test(para) ? 'kr' : ''}>
+                  {para}
+                </p>
+              ))}
+          </div>
         </div>
 
         {/* Cols 2–4 — gallery: each image (centered, 2 cols) + caption (1 col, bottom-right) */}
