@@ -36,6 +36,9 @@
     /* Enable JetBrains Mono ligatures: "->" / "<-" render as arrows. */
     font-variant-ligatures: contextual;
     font-feature-settings: 'calt' 1, 'liga' 1;
+    /* Break lines by word (Latin at spaces; Korean at 어절), never mid-word. */
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   /* Force a single weight (300) everywhere, overriding font-weight utilities. */
