@@ -1,7 +1,6 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { collections, site } from '../data/site'
-import { asset } from '../lib/asset'
 import { generateHomeLayout } from '../lib/homeLayout'
 import Reveal from '../components/Reveal'
 import Img from '../components/Img'
@@ -10,7 +9,7 @@ function Card({ c }) {
   return (
     <Reveal className="group col-span-6 tablet:col-span-4 desktop:col-span-2">
       <Link to={`/project/${c.slug}`} className="block">
-        <Img src={asset(c.image)} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
+        <Img src={c.image} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
         <div className="mt-2.5 flex items-baseline justify-between text-[12px] font-medium">
           <span>{c.title}</span>
           <span className="text-muted">{c.year}</span>

@@ -16,8 +16,9 @@ export default {
         muted: '#8a8a8a',
       },
       fontFamily: {
-        sans: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        // Latin uses JetBrains Mono; Korean glyphs fall back to Pretendard.
+        sans: ['JetBrains Mono', 'Pretendard', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        mono: ['JetBrains Mono', 'Pretendard', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
     },
   },

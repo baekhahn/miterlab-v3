@@ -47,6 +47,13 @@
   ::selection {
     @apply bg-paper text-ink;
   }
+
+  /* Korean text: Pretendard, slightly tighter tracking, weight 500. */
+  .kr {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500 !important;
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Cap the largest type at 2rem (32px) — overrides any larger size utility,

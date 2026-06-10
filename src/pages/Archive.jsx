@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { collections } from '../data/site'
 import { fullBySlug } from '../data/collections'
-import { asset } from '../lib/asset'
 import Reveal from '../components/Reveal'
 import PageTitle from '../components/PageTitle'
 import Img from '../components/Img'
@@ -13,7 +12,7 @@ function ThumbnailView() {
       {collections.map((c, i) => (
         <Reveal key={c.slug} delay={(i % 4) * 60} className="group">
           <Link to={`/project/${c.slug}`} className="block">
-            <Img src={asset(c.image)} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
+            <Img src={c.image} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
             <div className="mt-3 flex items-baseline justify-between text-[12px] font-medium">
               <span>{c.title}</span>
               <span className="text-muted">{c.year}</span>
@@ -70,7 +69,7 @@ function ListView() {
         }}
       >
         {hovered && (
-          <Img key={hovered.slug} src={asset(hovered.image)} alt="" aspect="aspect-[3/4]" />
+          <Img key={hovered.slug} src={hovered.image} alt="" aspect="aspect-[3/4]" />
         )}
       </div>
     </div>

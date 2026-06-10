@@ -1,7 +1,6 @@
 import { Link, useParams, Navigate } from 'react-router-dom'
 import { fullBySlug } from '../data/collections'
 import { collections } from '../data/site'
-import { asset } from '../lib/asset'
 import { captionFor } from '../lib/captions'
 import { descriptionFor } from '../lib/descriptions'
 import Reveal from '../components/Reveal'
@@ -44,7 +43,11 @@ export default function CollectionDetail() {
           </dl>
 
           <h1 className="mt-16 text-4xl font-medium tracking-tight desktop:mt-24">{c.title}</h1>
-          <p className="mt-6 max-w-sm text-left text-[16px] leading-relaxed text-paper/80">
+          <p
+            className={`mt-6 max-w-sm text-left text-[16px] leading-relaxed text-paper/80 ${
+              /[가-힣]/.test(descriptionFor(c.slug)) ? 'kr' : ''
+            }`}
+          >
             {descriptionFor(c.slug)}
           </p>
         </div>
@@ -58,7 +61,7 @@ export default function CollectionDetail() {
             >
               {/* image — middle two columns, centered */}
               <div className="flex justify-center desktop:col-span-2">
-                <Img src={asset(src)} alt={`${c.title} — ${i + 1}`} className="w-full" />
+                <Img src={src} alt={`${c.title} — ${i + 1}`} className="w-full" />
               </div>
 
               {/* caption — last column: left-aligned paragraph, at the image bottom */}
