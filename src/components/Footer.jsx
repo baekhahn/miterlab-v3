@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="text-[12px]">
           <div className="mb-3 text-muted">Menu</div>
           <ul className="space-y-1">
-            <li><Link to="/profile" className="transition-opacity hover:opacity-60">About</Link></li>
+            <li><Link to="/about" className="transition-opacity hover:opacity-60">About</Link></li>
             <li><Link to="/project" className="transition-opacity hover:opacity-60">Project</Link></li>
             <li><Link to="/contact" className="transition-opacity hover:opacity-60">Contact</Link></li>
           </ul>

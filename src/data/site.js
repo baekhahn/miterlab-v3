@@ -1,7 +1,7 @@
 export const site = {
   brand: 'Miterlab',
   navLeft: [
-    { label: 'About', href: '/profile' },
+    { label: 'About', href: '/about' },
     { label: 'Project', href: '/project' },
   ],
   navRight: [

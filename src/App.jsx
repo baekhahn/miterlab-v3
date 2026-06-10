@@ -25,7 +25,8 @@ export default function App() {
           <Route path="/archive" element={<Navigate to="/project" replace />} />
           <Route path="/collection" element={<Navigate to="/project" replace />} />
           <Route path="/collection/:slug" element={<LegacyProjectRedirect />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/about" element={<Profile />} />
+          <Route path="/profile" element={<Navigate to="/about" replace />} />
           <Route path="/journal" element={<JournalList />} />
           <Route path="/journal/:slug" element={<JournalDetail />} />
           <Route path="/contact" element={<Contact />} />
