@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { collections } from '../data/site'
 import { fullBySlug } from '../data/collections'
@@ -28,6 +28,7 @@ function ListView() {
   const rows = [...collections].sort((a, b) => Number(b.year) - Number(a.year))
   const [hovered, setHovered] = useState(null)
   const [pos, setPos] = useState({ x: 0, y: 0 })
+  const loadedThumbs = useRef(new Set()) // remember which thumbs have loaded
 
   return (
     <div className="relative" onMouseMove={(e) => setPos({ x: e.clientX, y: e.clientY })}>
@@ -69,7 +70,14 @@ function ListView() {
         }}
       >
         {hovered && (
-          <Img key={hovered.slug} src={hovered.image} alt="" aspect="aspect-[3/4]" />
+          <Img
+            key={hovered.slug}
+            src={hovered.image}
+            alt=""
+            aspect="aspect-[3/4]"
+            eager={loadedThumbs.current.has(hovered.image)}
+            onReady={() => loadedThumbs.current.add(hovered.image)}
+          />
         )}
       </div>
     </div>
