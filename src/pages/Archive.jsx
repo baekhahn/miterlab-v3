@@ -85,7 +85,16 @@ function ListView() {
 }
 
 export default function Archive() {
-  const [view, setView] = useState('grid') // 'grid' | 'list'
+  // Remember the last view so returning from a detail page (Back) lands on the
+  // same view the user came from (grid vs list).
+  const [view, setView] = useState(
+    () => sessionStorage.getItem('projectView') || 'grid',
+  ) // 'grid' | 'list'
+
+  const selectView = (next) => {
+    setView(next)
+    sessionStorage.setItem('projectView', next)
+  }
 
   return (
     <section className="px-8 pb-6">
@@ -94,7 +103,7 @@ export default function Archive() {
           <div className="flex gap-4 text-[14px]">
             <button
               type="button"
-              onClick={() => setView('grid')}
+              onClick={() => selectView('grid')}
               className={`uppercase transition-opacity hover:opacity-60 ${
                 view === 'grid' ? 'text-paper' : 'text-muted'
               }`}
@@ -103,7 +112,7 @@ export default function Archive() {
             </button>
             <button
               type="button"
-              onClick={() => setView('list')}
+              onClick={() => selectView('list')}
               className={`uppercase transition-opacity hover:opacity-60 ${
                 view === 'list' ? 'text-paper' : 'text-muted'
               }`}
