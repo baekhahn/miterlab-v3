@@ -5,8 +5,8 @@ import { projects, projectBySlug } from '../projects'
 export const collectionsFull = projects
 export const fullBySlug = projectBySlug
 
-// Journal / profile / contact content still lives in content.json.
-export const profile = content.profile
+// Journal / contact content still lives in content.json.
+// (About content moved to its own folder: src/about/)
 export const contact = content.contact
 export const journal = content.journal || []
 export const journalBySlug = (slug) => journal.find((p) => p.slug === slug)
