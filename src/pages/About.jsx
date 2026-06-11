@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { about } from '../about'
 import { site } from '../data/site'
 import Reveal from '../components/Reveal'
@@ -15,21 +16,39 @@ function Row({ label, children, wide = false, className = '' }) {
   )
 }
 
+// Ticker cell: fixed-ratio skeleton box so the strip has its final geometry
+// before the image loads; shimmer shows while loading, image fades in.
+function TickerImage({ src, ratio, hidden }) {
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <div
+      aria-hidden={hidden}
+      style={{ aspectRatio: ratio }}
+      className={`skeleton relative mr-3 h-[260px] shrink-0 overflow-hidden tablet:h-[380px] desktop:h-[480px] ${
+        loaded ? 'is-loaded' : ''
+      }`}
+    >
+      <img
+        src={src}
+        alt=""
+        decoding="async"
+        onLoad={() => setLoaded(true)}
+        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
+          loaded ? 'opacity-100' : 'opacity-0'
+        }`}
+      />
+    </div>
+  )
+}
+
 // Full-bleed infinite rolling image strip (Framer Ticker equivalent).
 function Ticker({ images }) {
   const strip = [...images, ...images] // two halves -> seamless -50% loop
   return (
     <div className="-mx-8 overflow-hidden">
       <div className="ticker-track flex w-max">
-        {strip.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            aria-hidden={i >= images.length}
-            decoding="async"
-            className="mr-3 h-[260px] w-auto object-cover tablet:h-[380px] desktop:h-[480px]"
-          />
+        {strip.map((f, i) => (
+          <TickerImage key={i} src={f.src} ratio={f.ratio} hidden={i >= images.length} />
         ))}
       </div>
     </div>

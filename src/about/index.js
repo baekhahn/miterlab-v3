@@ -30,8 +30,18 @@ const gallery = Object.entries(galleryModules)
   .sort((a, b) => numOf(a[0]) - numOf(b[0]))
   .map(([, url]) => url)
 
+// Aspect ratios (w/h) per figure number — lets the ticker lay out exact-size
+// skeleton boxes before the images load. Update if a figure is replaced.
+const figureRatios = {
+  1: 1200 / 840,
+  2: 900 / 1200,
+  3: 960 / 1200,
+  4: 1200 / 655,
+  5: 840 / 1200,
+}
+
 const figures = Object.entries(figureModules)
   .sort((a, b) => numOf(a[0]) - numOf(b[0]))
-  .map(([, url]) => url)
+  .map(([path, url]) => ({ src: url, ratio: figureRatios[numOf(path)] || 4 / 3 }))
 
 export const about = { ...content, cover, gallery, figures }

@@ -22,10 +22,12 @@ export default function CollectionDetail() {
 
   return (
     <article className="px-8 pb-24">
-      {/* PC: 12 columns — [text x3] [image x6] [caption x3] */}
-      <div className="grid grid-cols-1 gap-10 desktop:grid-cols-12 desktop:gap-8">
+      {/* PC: 12 columns — [text x3] [image x6] [caption x3].
+          >=1920px: the info column takes the same width as the caption
+          column, so the image sits exactly centered in the viewport. */}
+      <div className="grid grid-cols-1 gap-10 desktop:grid-cols-12 desktop:gap-8 min-[1920px]:grid-cols-[clamp(446px,30vw_-_130px,620px)_minmax(0,1fr)]">
         {/* Cols 1–3 — sticky info / text */}
-        <div className="desktop:col-span-3 desktop:sticky desktop:top-8 desktop:h-fit desktop:self-start">
+        <div className="desktop:col-span-3 desktop:sticky desktop:top-8 desktop:h-fit desktop:self-start min-[1920px]:col-span-1">
           <Link
             to="/project"
             className="text-[14px] uppercase text-muted transition-colors hover:text-paper"
@@ -33,16 +35,7 @@ export default function CollectionDetail() {
             {'<- Back'}
           </Link>
 
-          <dl className="mt-10 space-y-5 text-[12px] desktop:mt-16">
-            {meta.map((m) => (
-              <div key={m.label} className="flex justify-between gap-6 border-b border-paper/15 pb-3">
-                <dt className="text-muted">{m.label}</dt>
-                <dd className="text-right">{m.value}</dd>
-              </div>
-            ))}
-          </dl>
-
-          <h1 className="mt-16 text-4xl font-medium tracking-tight desktop:mt-24">{c.title}</h1>
+          <h1 className="mt-8 text-4xl font-medium tracking-tight">{c.title}</h1>
           <div className="mt-6 space-y-4 text-left text-[16px] leading-relaxed text-paper/80">
             {descriptionFor(c.slug)
               .split(/\n\n+/)
@@ -52,23 +45,37 @@ export default function CollectionDetail() {
                 </p>
               ))}
           </div>
+
+          {/* meta — below the description */}
+          <dl className="mt-12 space-y-5 text-[12px]">
+            {meta.map((m) => (
+              <div key={m.label} className="flex justify-between gap-6 border-b border-paper/15 pb-3">
+                <dt className="text-muted">{m.label}</dt>
+                <dd className="text-right">{m.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         {/* Cols 4–12 — gallery: each image (6 cols, centered) + caption (3 cols, bottom-right) */}
-        <div className="space-y-12 desktop:col-span-9 desktop:space-y-16">
+        <div className="space-y-12 desktop:col-span-9 desktop:space-y-16 min-[1920px]:col-span-1">
           {c.gallery.map((src, i) => (
             <Reveal
               key={i}
-              className="grid grid-cols-1 items-end gap-4 desktop:grid-cols-9 desktop:gap-8"
+              className="grid grid-cols-1 items-end gap-4 min-[1440px]:grid-cols-[minmax(0,1fr)_clamp(200px,min(57.5vw_-_625px,30vw_-_130px),620px)] min-[1440px]:gap-8"
             >
-              {/* image — first six columns, centered */}
-              <div className="flex justify-center desktop:col-span-6">
+              {/* image — below 1440px the caption stacks underneath (hybrid:
+                  PC info column + mobile-style gallery) so the photo fills the
+                  gallery width; above, the image takes whatever the fluid
+                  caption column leaves over */}
+              <div className="flex justify-center">
                 <Img src={src} alt={`${c.title} — ${i + 1}`} className="w-full" />
               </div>
 
-              {/* caption — last columns: left-aligned paragraph, at the image bottom */}
-              <div className="desktop:col-span-3">
-                <p className="max-w-xs text-left text-[13px] leading-relaxed text-paper/80">
+              {/* caption — fluid side column above 1440px: grows smoothly from
+                  200px (at 1440) onward — ~58% of viewport growth until 1800px, then a gentler 30% (caps at 620px) so it never gets too wide */}
+              <div>
+                <p className="max-w-xs text-left text-[12px] leading-relaxed text-paper/80">
                   {captionFor(i)}
                 </p>
               </div>
