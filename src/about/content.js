@@ -1,6 +1,13 @@
 // About page text. Edit this file (and drop images in this folder) to update
 // the About page — same folder-based flow as src/projects/<slug>/.
 export default {
+  // Korean companion to the intro statement (site.about), shown in the
+  // right columns beside the headline.
+  introKr: [
+    '조화롭고 사려 깊은 경험을 통해 사람에게 오래 남는 가치를 만듭니다.',
+    '45도로 정교하게 맞물리는 마이터 조인트처럼, 아이디어와 기술을 세심하게 엮어 단단한 완성도를 만들어갑니다.',
+  ],
+
   // "Who We Are" body paragraphs — English first, Korean below.
   // Korean paragraphs are auto-styled with .kr (Pretendard 500).
   intro: [

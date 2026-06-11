@@ -8,9 +8,11 @@ import Img from '../components/Img'
 function Card({ c }) {
   return (
     <Reveal className="group col-span-6 tablet:col-span-4 desktop:col-span-2">
-      <Link to={`/project/${c.slug}`} className="block">
-        <Img src={c.image} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover" />
-        <div className="mt-2.5 flex items-baseline justify-between text-[12px] font-medium">
+      <Link to={`/project/${c.slug}`} className="relative block">
+        <Img src={c.image} alt={c.title} aspect="aspect-[3/4]" imgClassName="img-hover img-bw" />
+        {/* caption floats below the image (out of flow) so the card reserves
+            no space for it; it fades in within the row gap on hover */}
+        <div className="absolute inset-x-0 top-full mt-2.5 flex items-baseline justify-between text-[12px] font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <span>{c.title}</span>
           <span className="text-muted">{c.year}</span>
         </div>

@@ -114,6 +114,17 @@
     transform: scale(1.03);
   }
 
+  /* Grayscale thumbnail that regains color on hover (Home cards).
+     Transition list repeats img-hover's so the two classes compose. */
+  .img-bw {
+    filter: grayscale(1);
+    transition: filter 0.5s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.4s ease;
+  }
+  .group:hover .img-bw {
+    filter: grayscale(0);
+  }
+
   /* Skeleton loading placeholder (shimmer) shown until the image loads. */
   .skeleton {
     background-color: #141414;
