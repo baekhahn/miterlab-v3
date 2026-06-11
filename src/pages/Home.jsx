@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { collections, site } from '../data/site'
 import { generateHomeLayout } from '../lib/homeLayout'
 import Reveal from '../components/Reveal'
@@ -23,7 +23,10 @@ function Card({ c }) {
 
 export default function Home() {
   // Generate a fresh RANDOM layout (positions + content) on every visit.
-  const layout = useMemo(() => generateHomeLayout(collections), [])
+  // location.key changes when the logo is clicked on home, reshuffling
+  // only this grid — the rest of the page DOM stays put (no reload flash).
+  const { key } = useLocation()
+  const layout = useMemo(() => generateHomeLayout(collections), [key])
 
   return (
     <>

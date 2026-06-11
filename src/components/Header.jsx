@@ -1,20 +1,13 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { site } from '../data/site'
 import Logo from './Logo'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const location = useLocation()
   const navAll = [...site.navLeft, ...site.navRight]
-
-  // On home, the logo's <Link to="/"> is a no-op — force a refresh instead.
-  const handleBrand = (e) => {
-    if (location.pathname === '/') {
-      e.preventDefault()
-      window.location.reload()
-    }
-  }
+  // Clicking the logo on home pushes a new history entry (new location.key),
+  // which Home uses to reshuffle just the portfolio grid — no page reload.
 
   return (
     <>
@@ -31,7 +24,7 @@ export default function Header() {
         </nav>
 
         {/* Brand */}
-        <Link to="/" onClick={handleBrand} className="desktop:justify-self-center" aria-label={site.brand}>
+        <Link to="/" className="desktop:justify-self-center" aria-label={site.brand}>
           <Logo className="h-5 w-auto" />
         </Link>
 
@@ -61,14 +54,7 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between px-8 py-5 text-[12px]">
-          <Link
-            to="/"
-            onClick={(e) => {
-              setOpen(false)
-              handleBrand(e)
-            }}
-            aria-label={site.brand}
-          >
+          <Link to="/" onClick={() => setOpen(false)} aria-label={site.brand}>
             <Logo className="h-5 w-auto" />
           </Link>
           <button
