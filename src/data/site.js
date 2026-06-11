@@ -10,7 +10,7 @@ export const site = {
     { label: 'Contact', href: '/contact' },
   ],
   about:
-    'We craft cohesive, thoughtful experiences that feel deeply human. Like a mitered joint set at 45 degrees, ideas and technologies come together with care to create lasting value.',
+    'Like a perfect 45-degree miter, we join ideas and technology with care to create seamless human experiences built to last.',
   socials: [
     { label: 'Instagram', href: '#' },
     { label: 'Facebook', href: '#' },
